@@ -2,7 +2,7 @@
 //  WeatherForeCastingApp.swift
 //  WeatherForeCasting
 //
-//  Created by Parvind Bhatt on 27/09/24.
+//  Created by Parvind Bhatt on 26/09/24.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct WeatherForeCastingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WFCWeatherView()
         }
     }
 }
