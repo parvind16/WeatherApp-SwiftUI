@@ -11,9 +11,7 @@ Weather is a simple app that displays weather in SwiftUI. I tried to combine all
 ### Screenshots
 
 <div class="row" >
-  <img src="https://github.com/mssengar/kotlinWeatherApp/blob/main/app/src/main/java/com/mss/weatherapp/asset/search_screen_shot.png" width="320">
-  <img src="https://github.com/mssengar/kotlinWeatherApp/blob/main/app/src/main/java/com/mss/weatherapp/asset/weather_detail.png" width="320">
-  <img src="https://github.com/mssengar/kotlinWeatherApp/blob/main/app/src/main/java/com/mss/weatherapp/asset/Cache.png" alt="Mountains" width="320">
+  <img src="https://github.com/parvind16/WeatherApp-SwiftUI/blob/main/home.png" width="320">
 </div>
 
 ### API
