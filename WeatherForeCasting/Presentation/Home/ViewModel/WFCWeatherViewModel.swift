@@ -11,13 +11,14 @@ import CoreData
 
 class WFCWeatherViewModel: ObservableObject {
     private var getWeatherListUseCase = GetWeatherListUseCase(repository: WFCWeatherRepositoryImplementation(dataSource: WFCDataSourceImplementation()))
-        
+    
     @Published var weather = WFCWeatherResponse.dummyData()
     @Published var favorites = [WFCFavoriteEntity] ()
-    
+    var showFavoriteIcon = true
+
     @Published var city: String = "Dubai" {
         didSet {
-            getLocation()
+            getWeatherList()
         }
     }
     
@@ -38,10 +39,6 @@ class WFCWeatherViewModel: ObservableObject {
         formatter.dateFormat = "hh a"
         return formatter
     }()
-    
-    init() {
-        getLocation()
-    }
     
     var date: String {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -94,37 +91,6 @@ class WFCWeatherViewModel: ObservableObject {
         )
     }
     
-    private func getLocation() {
-        CLGeocoder().geocodeAddressString(city) { (placemarks, error) in
-            if let places = placemarks, let place = places.first {
-                self.getWeather(coord: place.location?.coordinate)
-            }
-        }
-    }
-    
-    private func getWeather(coord: CLLocationCoordinate2D?) {
-        if let coord = coord {
-            let urlString = WFCAPIEndpoint.getUrlFor(city: city)
-            getWeatherInternal(city: city, for: urlString)
-        } else {
-            let urlString = WFCAPIEndpoint.getUrlFor(city: city)
-            getWeatherInternal(city: city, for: urlString)
-        }
-    }
-    
-    private func getWeatherInternal(city: String, for urlString: String) {
-        NetworkManager<WFCWeatherResponse>.fetch(for: URL(string: urlString)!) { (result) in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self.weather = response
-                }
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
-    
     func getWeatherIconFor(icon: String) -> Image {
         switch icon {
         case "01d":
@@ -167,28 +133,35 @@ class WFCWeatherViewModel: ObservableObject {
             return Image(systemName: "sun.max.fill")
         }
     }
-
+    
     func getWeatherList() {
-        Task {
-            let result = try await getWeatherListUseCase.execute(urlString: "")
-            switch result {
-            case .success(let messages): 
-                break
-            case .failure(let error):
-                print(error)
-            }
-        }
+        let urlString = WFCAPIEndpoint.getUrlFor(city: self.city)
+         Task {
+             let result = try await getWeatherListUseCase.execute(urlString: urlString)
+             switch result {
+             case .success(let result):
+                 DispatchQueue.main.async {
+                     self.weather = result
+                 }
+             case .failure(let error):
+                 print(error)
+             }
+         }
     }
     
+    func getFavoriteDetail() {
+        showFavoriteIcon = false
+    }
 }
 
 extension WFCWeatherViewModel {
-
- func saveData(_ completion: @escaping ActionCompletion) {
-        WFCCoreDataManager.sharedInstance.performAndSave(operation: { reqContext in
+    
+    func saveData(_ completion: @escaping ActionCompletion) {
+        WFCCoreDataManager.sharedInstance.performAndSave(operation: { [weak self] reqContext in
             let favorite = WFCFavoriteEntity(context: reqContext)
-            if let jsonData = try? JSONEncoder().encode(self.weather) {
+            if let jsonData = try? JSONEncoder().encode(self?.weather) {
                 favorite.fieldData = jsonData
+                favorite.cityName = self?.city
             }
             return .success(true)
         }, completion: { [weak self] result in
@@ -206,12 +179,11 @@ extension WFCWeatherViewModel {
         })
     }
     
- func fetchFavoriteRecords() {
-        let fetchRequest: NSFetchRequest<WFCFavoriteEntity>
-        fetchRequest = WFCFavoriteEntity.fetchRequest()
-        let result = try? WFCCoreDataManager.sharedInstance.fetch(fetchRequest, map: { fetchresults in
-            //self.favorites = fetchresults.allObjects
-            debugPrint(fetchresults.count)
+    func fetchFavoriteRecords() {
+        let fetchRequest: NSFetchRequest<WFCFavoriteEntity> = WFCFavoriteEntity.fetchRequest()
+        _ = try? WFCCoreDataManager.sharedInstance.fetch(fetchRequest, map: { fetchresults in
+            self.favorites = fetchresults
+            return nil
         })
     }
     

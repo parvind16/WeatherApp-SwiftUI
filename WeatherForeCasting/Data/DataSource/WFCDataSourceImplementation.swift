@@ -11,20 +11,6 @@ import SwiftUI
 
 struct WFCDataSourceImplementation: WFCWeatherDataSource {
     func getWeatherList(urlString: String) async throws -> WFCWeatherResponse {
-        return WFCWeatherResponse.dummyData()
+        return try await NetworkManager<WFCWeatherResponse>.fetch(for: URL(string: urlString)!)
     }
-    
-//    private func getWeatherInternal(city: String, for urlString: String) async throws -> WFCWeatherResponse {
-//        do {
-//            NetworkManager<WFCWeatherResponse>.fetch(for: URL(string: urlString)!) { (result) in
-//                switch result {
-//                case .success(_): break
-//                case .failure(let err):
-//                    print(err)
-//                }
-//            }
-//        } catch {
-//          
-//        }
-//    }
 }

@@ -16,6 +16,7 @@ struct WFCFavoritesView: View {
                 LazyVStack {
                     NavigationLink {
                         // destination view to navigation to
+                        WFCFavoriteDetailView(weatherViewModel: weatherViewModel)
                     } label: {
                         dailyCell(weather: weather)
                     }
@@ -23,26 +24,16 @@ struct WFCFavoritesView: View {
             }
         }
         .navigationBarTitle("Favorite")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                     weatherViewModel.saveData({_ in})
-                }) {
-                    Image(systemName: "heart")
-                        .padding()
-                }
-            }
-        }
         .onAppear {
             weatherViewModel.fetchFavoriteRecords()
         }
-        
     }
     
     private func dailyCell(weather: WFCFavoriteEntity) -> some View {
         HStack {
             Text(weather.cityName?.capitalized ?? "")
                 .frame(width: 50)
+            Spacer()
         }
         .foregroundColor(.white)
         .padding(.horizontal, 40)

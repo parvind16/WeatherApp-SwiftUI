@@ -31,13 +31,14 @@ struct WFCTodayWeatherView: View {
                 Spacer()
                 widgetView(image: "umbrella.fill", color: .red, title: "\(weatherViewModel.rainChances)")
                 Spacer()
-                NavigationLink {
-                    // destination view to navigation to
-                    WFCFavoritesView(weatherViewModel: weatherViewModel)
-                } label: {
-                    widgetView(image: "heart", color: .red, title: "Favorite")
+                if weatherViewModel.showFavoriteIcon {
+                    NavigationLink {
+                        WFCFavoritesView(weatherViewModel: weatherViewModel)
+                    } label: {
+                        widgetView(image: "heart", color: .red, title: "Favorite")
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
         }
         .padding()

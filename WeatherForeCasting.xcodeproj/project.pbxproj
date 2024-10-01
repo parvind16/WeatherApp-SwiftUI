@@ -32,6 +32,7 @@
 		518D39DA2CAAE3620074009A /* WFCCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D39D92CAAE3620074009A /* WFCCoreDataManager.swift */; };
 		518D39DC2CAAE4040074009A /* WFCRDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D39DB2CAAE4040074009A /* WFCRDataModel.swift */; };
 		518D39DE2CAAE57B0074009A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D39DD2CAAE57B0074009A /* Util.swift */; };
+		51933BDA2CAC0BAA0094E51B /* WFCFavoriteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51933BD92CAC0BAA0094E51B /* WFCFavoriteDetailView.swift */; };
 		51A2F3302CAB12E800128224 /* WFCFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A2F32F2CAB12E800128224 /* WFCFavoritesView.swift */; };
 		51F1C3142CA9531100124331 /* WFCApiEndpoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143C1E92CA677620049D760 /* WFCApiEndpoint+Extensions.swift */; };
 		51F1C3182CA982D000124331 /* WFCForecastday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1C3152CA982D000124331 /* WFCForecastday.swift */; };
@@ -83,6 +84,7 @@
 		518D39D92CAAE3620074009A /* WFCCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFCCoreDataManager.swift; sourceTree = "<group>"; };
 		518D39DB2CAAE4040074009A /* WFCRDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFCRDataModel.swift; sourceTree = "<group>"; };
 		518D39DD2CAAE57B0074009A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		51933BD92CAC0BAA0094E51B /* WFCFavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFCFavoriteDetailView.swift; sourceTree = "<group>"; };
 		51A2F32F2CAB12E800128224 /* WFCFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFCFavoritesView.swift; sourceTree = "<group>"; };
 		51F1C3152CA982D000124331 /* WFCForecastday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFCForecastday.swift; sourceTree = "<group>"; };
 		51F1C3172CA982D000124331 /* WFCCurrent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFCCurrent.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				51F1C31D2CA986DB00124331 /* WFCCityNameView.swift */,
 				51F1C3202CA986DB00124331 /* WFCDailyWeatherView.swift */,
 				51A2F32F2CAB12E800128224 /* WFCFavoritesView.swift */,
+				51933BD92CAC0BAA0094E51B /* WFCFavoriteDetailView.swift */,
 				51F1C3212CA986DB00124331 /* WFCMenuHeaderView.swift */,
 				51F1C3232CA986DB00124331 /* WFCTodayWeatherView.swift */,
 			);
@@ -450,6 +453,7 @@
 				51F1C3182CA982D000124331 /* WFCForecastday.swift in Sources */,
 				5143C1E12CA65F2A0049D760 /* WFCWeatherViewModel.swift in Sources */,
 				5143C1EB2CA677620049D760 /* NetworkManager.swift in Sources */,
+				51933BDA2CAC0BAA0094E51B /* WFCFavoriteDetailView.swift in Sources */,
 				518D39DA2CAAE3620074009A /* WFCCoreDataManager.swift in Sources */,
 				5143C1E52CA65F2A0049D760 /* WFCWeatherResponse.swift in Sources */,
 				51A2F3302CAB12E800128224 /* WFCFavoritesView.swift in Sources */,

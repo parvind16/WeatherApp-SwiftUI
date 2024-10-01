@@ -14,6 +14,20 @@ struct WFCMenuHeaderView: View {
     @State private var searchTerm = "Dubai"
     
     var body: some View {
+        HStack() {
+            Button {
+                weatherViewModel.saveData({_ in})
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.gray.opacity(0.5))
+                    Image(systemName: "heart")
+                }
+            }
+            .frame(width: 30, height: 30)
+            Spacer()
+        }
+       
         HStack {
             TextField("", text: $searchTerm)
                 .padding(.horizontal, 20)
