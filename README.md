@@ -11,7 +11,9 @@ Weather is a simple app that displays weather in SwiftUI. I tried to combine all
 ### Screenshots
 
 <div class="row" >
-  <img src="https://github.com/parvind16/WeatherApp-SwiftUI/blob/main/home.png" width="320">
+  <img src="https://github.com/parvind16/WeatherApp-SwiftUI/blob/main/AppImages/home1.png" width="320">
+    <img src="https://github.com/parvind16/WeatherApp-SwiftUI/blob/main/AppImages/favoritelist.png" width="320">
+      <img src="https://github.com/parvind16/WeatherApp-SwiftUI/blob/main/AppImages/favoritedetail.png" width="320">
 </div>
 
 ### API
